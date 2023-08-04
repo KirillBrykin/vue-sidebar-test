@@ -3,9 +3,9 @@ import "../../assets/css/sidebar.css"
 import SvgBootstrap from "@/components/parts/SvgBootstrap.vue";
 
 const menuList = [
-  {url: '/', name: 'О пиратской жизни', svg: '#tsunami'},
-  {url: '/team', name: 'Команда корабля', svg: '#gender-trans'},
-  {url: '/clients', name: 'Жертвы', svg: '#emojiKiss'}
+  {url: '/', name: 'Пиратский кодекс', svg: '#tsunami'},
+  {url: '/crew', name: 'Команда корабля', svg: '#gender-trans'},
+  {url: '/victims', name: 'Жертвы', svg: '#emojiKiss'}
 ];
 
 const dropdownMenu = [
@@ -28,18 +28,18 @@ const props = defineProps({user: Object});
         <use xlink:href="#radioactive"/>
       </svg>
       <i class="bi bi-radioactive"></i>
-      <span class="fs-5">Летучий голландец</span>
+      <span class="fs-5">Летучий Голландец</span>
     </a>
 
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li v-for="menu in menuList" :key="menu.url">
-        <a class="nav-link text-white" aria-current="page">
+        <router-link :to="menu.url" active-class="active" class="nav-link text-white" aria-current="page">
           <svg class="bi pe-none me-2" width="16" height="16">
             <use :href="`${menu.svg}`"/>
           </svg>
           {{ menu.name }}
-        </a>
+        </router-link>
       </li>
     </ul>
     <hr>
