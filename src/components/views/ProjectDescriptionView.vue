@@ -4,8 +4,7 @@
 
 <template>
 
-
-  <h2>Пираты</h2>
+  <h2>О проекте</h2>
   <p>text1</p>
   <p>text2</p>
   <p>text3</p>

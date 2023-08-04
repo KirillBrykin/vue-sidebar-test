@@ -4,7 +4,6 @@
 
 <template>
 
-
   <h2>Команда пиратов</h2>
   <table class="table table-striped table-bordered table-dark">
     <thead>
