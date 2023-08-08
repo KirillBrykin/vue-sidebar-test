@@ -10,14 +10,12 @@ const authUser = {
 </script>
 
 <template>
-  <main>
-    <div class="d-flex flex-nowrap">
-      <Sidebar :user="authUser"></Sidebar>
-      <DividerBar/>
-      <div class="container-fluid m-4">
-        <div class="row">
-          <router-view/>
-        </div>
+  <main class="d-flex flex-nowrap">
+    <Sidebar :user="authUser"></Sidebar>
+    <DividerBar/>
+    <div class="container-fluid m-4">
+      <div class="row">
+        <router-view/>
       </div>
     </div>
   </main>

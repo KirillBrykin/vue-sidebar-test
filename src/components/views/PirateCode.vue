@@ -14,8 +14,12 @@ function handleClick() {
   <p>text2</p>
   <p>text3</p>
 
-  <p><a href="#" @click="handleClick">click me to go to the crew</a></p>
-  <p><a href="#" @click="$router.push({name: 'victims'})">click me to go to the victims</a></p>
+  <p>
+    <a href="#" @click="handleClick">click me to go to the crew</a>
+  </p>
+  <p>
+    <a href="#" @click="$router.push({name: 'victims'})">click me to go to the victims</a>
+  </p>
 </template>
 
 <style scoped>

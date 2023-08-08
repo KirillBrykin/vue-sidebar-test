@@ -14,12 +14,22 @@ const router = createRouter({
         {
             name: 'crew',
             path: '/crew',
-            component: () => import("@/components/views/CrewView.vue")
+            component: () => import("@/components/views/crew/CrewView.vue")
         },
         {
             name: 'victims',
             path: '/victims',
             component: () => import("@/components/views/VictimsView.vue")
+        },
+        {
+            name: 'crew.add',
+            path: '/crew/add',
+            component: () => import("@/components/views/crew/FormCreateView.vue")
+        },
+        {
+            name: 'crew.edit',
+            path: '/crew/:id/edit',
+            component: () => import("@/components/views/crew/FormEditView.vue")
         }
     ]
 })
