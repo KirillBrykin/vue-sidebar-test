@@ -17,7 +17,7 @@ onMounted(async () => {
 
 async function deletePirate(id, index) {
   await crewStore.deletePirateById(id)
-  this.getCrew.splice(index)
+  this.getCrew.splice(index, 1)
 }
 </script>
 
