@@ -9,7 +9,7 @@ const router = createRouter({
         {
             name: 'pirateCode',
             path: '/',
-            component: () => import("@/components/views/PirateCode.vue")
+            component: () => import("@/components/views/PirateCodeView.vue")
         },
         {
             name: 'crew',

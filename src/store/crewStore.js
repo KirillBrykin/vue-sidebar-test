@@ -4,7 +4,7 @@ import axios from "axios";
 import {useToast} from "vue-toast-notification";
 
 const $toast = useToast();
-const URL = 'http://localhost:8080/api'
+const URL = import.meta.env.VITE_APP_API_HOST
 
 export const useCrewStore = defineStore("crewStore", {
     state: () => ({
