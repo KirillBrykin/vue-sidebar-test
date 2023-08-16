@@ -1,6 +1,9 @@
 <script setup>
 import "../../assets/css/sidebar.css"
 import SvgBootstrap from "@/components/parts/SvgBootstrap.vue";
+import {useAuthStore} from "@/store/authStore";
+
+const authStore = useAuthStore()
 
 const menuList = [
   {url: '/', name: 'Пиратский кодекс', svg: '#tsunami'},
@@ -57,7 +60,7 @@ const props = defineProps({user: Object});
         <li>
           <hr class="dropdown-divider">
         </li>
-        <li><a class="dropdown-item" href="#">Выход</a></li>
+        <li><a @click="authStore.logout()" class="dropdown-item" href="#">Выход</a></li>
       </ul>
     </div>
   </div>

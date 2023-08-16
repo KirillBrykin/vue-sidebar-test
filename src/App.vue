@@ -1,10 +1,12 @@
 <script setup>
 import Sidebar from "@/components/parts/Sidebar.vue";
 import DividerBar from "@/components/parts/DividerBar.vue";
+import {useAuthStore} from "@/store/authStore";
 
+const authStore = useAuthStore()
 
 const authUser = {
-  name: "Черная Борода",
+  name: authStore.getUserName,
   url: "https://sun9-31.userapi.com/impf/c626122/v626122940/4b916/NHsOatxET68.jpg?size=720x1280&quality=96&sign=0ada1be20019613765bb5a3448569716&type=album"
 };
 </script>

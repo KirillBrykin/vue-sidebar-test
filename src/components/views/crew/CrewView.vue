@@ -1,7 +1,9 @@
 <script setup>
 import {useCrewStore} from "@/store/crewStore";
 import {computed, onMounted, ref} from "vue";
+import {useAuthStore} from "@/store/authStore";
 
+const authStore = useAuthStore()
 const crewStore = useCrewStore()
 
 let loading = ref(true)
@@ -25,7 +27,7 @@ async function deletePirate(id, index) {
   <div class="col-11">
     <h1>Команда корабля</h1>
   </div>
-  <div class="col-1">
+  <div class="col-1" v-if="authStore.isAdmin">
     <router-link :to="{name: 'crew.add'}" class="btn btn-primary float-end">Добавить</router-link>
   </div>
 
@@ -38,7 +40,7 @@ async function deletePirate(id, index) {
       <th scope="col">Кличка</th>
       <th scope="col">Почта</th>
       <th scope="col">Должность</th>
-      <th scope="col">Действие</th>
+      <th scope="col" v-if="authStore.isAdmin">Действие</th>
     </tr>
     </thead>
     <tbody>
@@ -47,14 +49,14 @@ async function deletePirate(id, index) {
       <td>{{ pirate.nickName }}</td>
       <td>{{ pirate.email }}</td>
       <td>{{ pirate.position }}</td>
-      <td>
+      <td v-if="authStore.isAdmin">
         <router-link :to="{name: 'crew.edit',params:{id : pirate.id}}" class="btn btn-success m-1">Изменить
         </router-link>
         <input type="submit" class="btn btn-danger m-1" value="Удалить" @click="deletePirate(pirate.id, index)">
       </td>
     </tr>
     <tr>
-      <td colspan="4">Всего</td>
+      <td :colspan="authStore.isAdmin ? 4 : 3">Всего</td>
       <td>{{ getCrew.length }}</td>
     </tr>
     </tbody>

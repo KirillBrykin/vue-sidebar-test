@@ -54,7 +54,6 @@ keycloak.init({
         window.onfocus = () => {
             console.log('updateToken onfocus')
             authStore.updateToken()
-
         }
 
         app.mount('#app')
