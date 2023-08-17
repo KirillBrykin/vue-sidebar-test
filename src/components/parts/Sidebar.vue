@@ -2,13 +2,16 @@
 import "../../assets/css/sidebar.css"
 import SvgBootstrap from "@/components/parts/SvgBootstrap.vue";
 import {useAuthStore} from "@/store/authStore";
+import {watch} from "vue";
+import {useRoute} from "vue-router";
 
+const route = useRoute()
 const authStore = useAuthStore()
 
 const menuList = [
-  {url: '/', name: 'Пиратский кодекс', svg: '#tsunami'},
-  {url: '/crew', name: 'Команда корабля', svg: '#gender-trans'},
-  {url: '/victims', name: 'Жертвы', svg: '#emojiKiss'}
+  {url: '/', name: 'Пиратский кодекс', svg: '#tsunami', roles: null},
+  {url: '/crew', name: 'Команда корабля', svg: '#gender-trans', roles: ['client_role_admin', 'client_role_user']},
+  {url: '/victims', name: 'Жертвы', svg: '#emojiKiss', roles: null}
 ];
 
 const dropdownMenu = [
@@ -18,6 +21,13 @@ const dropdownMenu = [
 ];
 
 const props = defineProps({user: Object});
+
+//Обновляем токен при навигации по меню
+watch(() => route.fullPath, async () => {
+  console.log('updateToken watch menu')
+  await authStore.updateToken()
+})
+
 </script>
 
 <template>
@@ -37,7 +47,9 @@ const props = defineProps({user: Object});
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li v-for="menu in menuList" :key="menu.url">
-        <router-link :to="menu.url" active-class="active" class="nav-link text-white" aria-current="page">
+        <router-link v-if="menu.roles ===null || authStore.getRoles.some(r => menu.roles.indexOf(r) >=0)"
+                     :to="menu.url" active-class="active"
+                     class="nav-link text-white" aria-current="page">
           <svg class="bi pe-none me-2" width="16" height="16">
             <use :href="`${menu.svg}`"/>
           </svg>
